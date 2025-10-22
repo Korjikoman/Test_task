@@ -1,0 +1,6 @@
+[submodule "where-to-go-frontend"]
+	path = where-to-go-frontend
+	url = https://github.com/devmanorg/where-to-go-frontend
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/devmanorg/where-to-go-frontend
