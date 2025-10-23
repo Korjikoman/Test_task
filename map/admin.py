@@ -30,9 +30,9 @@ class PlaceImageInline(admin.TabularInline):
 
 @admin.register(Places)
 class PlacesAdmin(admin.ModelAdmin):
-    list_display = ['title', 'author', 'created_date', 'images_count', 'images_preview']
+    list_display = ['id', 'title', 'author', 'created_date', 'images_count', 'images_preview']
     list_filter = ['created_date', 'author']
-    search_fields = ['title', 'description_short']
+    search_fields = ['id', 'title', 'description_short']
     inlines = [PlaceImageInline]
     readonly_fields = ['coordinates_display']
     
