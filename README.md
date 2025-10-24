@@ -45,3 +45,9 @@
 
 <img width="1907" height="907" alt="image" src="https://github.com/user-attachments/assets/d1910053-7498-408b-9447-f0a180889e6f" />
 
+Админка
+
+<img width="1391" height="690" alt="image" src="https://github.com/user-attachments/assets/fe124473-93e8-4107-adf5-a757cb115099" />
+
+<img width="1450" height="714" alt="image" src="https://github.com/user-attachments/assets/42da0f87-e17e-4579-bcad-3f71aece9023" />
+
