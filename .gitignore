@@ -14,6 +14,9 @@ db.sqlite3
 # Static folder at project root
 /static/
 
+# media folder at map directory
+/map/media/
+
 # macOS
 ._*
 .DS_Store
@@ -30,3 +33,4 @@ $RECYCLE.BIN/
 .vscode/
 .history/
 *.code-workspace
+

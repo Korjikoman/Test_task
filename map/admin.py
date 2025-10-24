@@ -1,32 +1,14 @@
 from django.contrib import admin
+from django.db import models
+from image_uploader_widget.admin import OrderedImageUploaderInline
 from .models import Places, PlaceImage
 from django.utils.html import format_html
-from django.urls import reverse
-from django.http import HttpResponse
+
 import os
 
-class PlaceImageInline(admin.TabularInline):
+class PlaceImageInline(OrderedImageUploaderInline):
     model = PlaceImage
-    extra = 1
-    readonly_fields = ['image_preview', 'download_link']
-    
-    def image_preview(self, obj):
-        if obj.image:
-            return format_html(
-                '<img src="{}" width="100" height="100" style="object-fit: cover;" />',
-                obj.image.url
-            )
-        return "No image"
-    image_preview.short_description = 'Preview'
-    
-    def download_link(self, obj):
-        if obj.image:
-            return format_html(
-                '<a href="{}" download class="button">📥 Download</a>',
-                obj.image.url
-            )
-        return "No image"
-    download_link.short_description = 'Download'
+    order_field = "order"
 
 @admin.register(Places)
 class PlacesAdmin(admin.ModelAdmin):
@@ -41,7 +23,7 @@ class PlacesAdmin(admin.ModelAdmin):
     images_count.short_description = 'Images Count'
     
     def images_preview(self, obj):
-        images = obj.images.all()[:2]
+        images = obj.images.all()[:3]
         previews = []
         for img in images:
             if img.image:
@@ -115,6 +97,7 @@ class PlaceImageAdmin(admin.ModelAdmin):
                 return f"{size:.1f} {unit}"
             size /= 1024.0
         return f"{size:.1f} TB"
+    
     
     fieldsets = (
         (None, {
