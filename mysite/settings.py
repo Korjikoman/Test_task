@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j&y2m*%3!jbpp!hq)k6x*-^5gb#)y8=6@#!#st+%(vxj04&ocl'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 
 
 # Application definition
@@ -59,7 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'frontend'),
+            os.path.join(BASE_DIR, 'front'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -126,7 +129,7 @@ STATIC_ROOT = BASE_DIR / 'static/'
 
 # Добавляем фронтенд в статические файлы
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend'),  # все файлы фронтенда
+    os.path.join(BASE_DIR, 'front'),  # все файлы фронтенда
 ]
 
 # Default primary key field type
@@ -137,3 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
